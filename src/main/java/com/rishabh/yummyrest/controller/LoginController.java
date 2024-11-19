@@ -22,8 +22,9 @@ public class LoginController {
 
     @PostMapping
     public ResponseEntity<String> login(@RequestBody @Valid LoginRequest request) {
-        String message = loginService.login(request);
-        return ResponseEntity.ok(message);
+
+        String jwtToken = loginService.login(request);
+        return ResponseEntity.ok(jwtToken);
     }
 
     // Exception handler for invalid credentials
