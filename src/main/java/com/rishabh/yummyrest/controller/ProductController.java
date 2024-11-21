@@ -25,11 +25,9 @@ public class ProductController {
     ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productRepo.findAll();
         if (products.isEmpty()) {
-            return ResponseEntity.ok(products);
-        }
-        else{
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(products);
         }
+        return ResponseEntity.ok(products);
     }
 
     @GetMapping("/{productId}")
